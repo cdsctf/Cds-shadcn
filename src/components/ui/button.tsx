@@ -26,7 +26,7 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
-                default: [
+                solid: [
                     "bg-primary",
                     "text-primary-foreground",
                     "hover:bg-primary/90",
@@ -44,7 +44,7 @@ const buttonVariants = cva(
                     "hover:text-accent-foreground",
                 ],
                 secondary: [
-                    "bg-secondary",
+                    "bg-secondary/50",
                     "text-secondary-foreground",
                     "hover:bg-secondary/80",
                 ],
@@ -55,12 +55,15 @@ const buttonVariants = cva(
                 md: "h-10 px-4 py-2",
                 sm: "h-9 rounded-md px-3",
                 lg: "h-11 rounded-md px-8",
-                icon: "h-10 w-10",
+            },
+            icon: {
+                true: "aspect-square",
             },
         },
         defaultVariants: {
-            variant: "default",
+            variant: "ghost",
             size: "md",
+            icon: false,
         },
     }
 );
@@ -77,6 +80,7 @@ function Button(props: ButtonProps) {
         className,
         variant,
         size,
+        icon,
         asChild = false,
         children,
         onClick,
@@ -118,7 +122,7 @@ function Button(props: ButtonProps) {
     const Comp = asChild ? Slot : "button";
     return (
         <Comp
-            className={cn(buttonVariants({ variant, size, className }))}
+            className={cn(buttonVariants({ variant, size, icon, className }))}
             ref={ref}
             onClick={(e) => {
                 handleClick(e);

@@ -63,7 +63,7 @@ export default {
                 },
             },
             animation: {
-                ripple: "ripple 1s linear forwards",
+                ripple: "ripple 0.5s linear forwards",
             },
         },
     },

@@ -15,6 +15,14 @@ export default createBrowserRouter([
                     };
                 },
             },
+            {
+                path: "playground",
+                lazy: async () => {
+                    return {
+                        Component: (await import("@/pages/playground")).default,
+                    };
+                },
+            },
         ],
     },
 ]);
